@@ -533,7 +533,7 @@ for Class, Properties in next, ClassPropertiesBlacklist do
 	ClassPropertiesBlacklist[Class] = ArrayToDictionary(Properties)
 end
 local function FetchAPI()
-	local API_Dump_Url = "https://raw.githubusercontent.com/MaximumADHD/Roblox-Client-Tracker/roblox/API-Dump.json"
+	local API_Dump_Url = "https://raw.githubusercontent.com/MaximumADHD/Roblox-Client-Tracker/roblox/Mini-API-Dump.json"
 	local API_Dump = game:HttpGet(API_Dump_Url, true)
 	local API_Classes = service.HttpService:JSONDecode(API_Dump).Classes
 
@@ -771,8 +771,8 @@ local function synsaveinstance(CustomOptions)
 
 	local OPTIONS = {
 		mode = "optimized", -- Change this to invalid mode like "custom" if you only want extrainstances; -- ! "optimized" mode is NOT supported with OPTIONS.Instance option
-		noscripts = true,
-		scriptcache = false,
+		noscripts = false,
+		scriptcache = true,
 		-- decomptype = "new", -- * Deprecated
 		timeout = 30,
 		--* New:
@@ -795,15 +795,15 @@ local function synsaveinstance(CustomOptions)
 		}
 		]]
 		ExtraInstances = {},
-		NilInstances = false,
+		NilInstances = true,
 		ShowStatus = true,
 		FilePath = false, --  does not need to contain a file extension, only the name of the file.
 		Object = false, -- If provided, saves as .rbxmx (Model file) instead; If Object is game, it will be saved as a .RBXL file -- ! MUST BE AN INSTANCE REFERENCE like game.Workspace for example; "optimized" mode is NOT supported with this option
 		-- Binary = false, -- true in syn newer versions (false in our case because no binary support yet)
 		-- Decompile = not OPTIONS.noscripts, -- ! This takes priority over OPTIONS.noscripts if set
 		-- DecompileTimeout = OPTIONS.timeout, -- ! This takes priority over OPTIONS.timeout if set
-		IgnoreDefaultProperties = false,
-		IgnoreNotArchivable = false,
+		IgnoreDefaultProperties = true,
+		IgnoreNotArchivable = true,
 		IgnorePropertiesOfNotScriptsOnScriptsMode = false, -- Ignores property of every instance that is not a script in "scripts" mode
 		IgnoreSpecialProperties = false, -- true will disable Terrain & some other things
 		-- IsolatePlayerGui = false,
@@ -811,13 +811,13 @@ local function synsaveinstance(CustomOptions)
 		IsolateLocalPlayer = false, -- Saves Children of LocalPlayer as separate folder and prevents any instance of ClassName Player with .Name identical to LocalPlayer.Name from saving
 		IsolateLocalPlayerCharacter = false, -- Saves Children of LocalPlayer.Character as separate folder and prevents any instance of ClassName Player with .Name identical to LocalPlayer.Name from saving
 		-- MaxThreads = 3
-		RemovePlayerCharacters = true, -- If enabled, player characters will not be saved.
-		SavePlayers = false,
+		RemovePlayerCharacters = false, -- If enabled, player characters will not be saved.
+		SavePlayers = true,
 		SaveCacheInterval = 0x1600, -- The less the more often it saves, but that would mean less performance due to constantly saving
 		ReadMe = true,
 		-- ! Risky
-		AllowResettingProperties = false, -- Enables Resetting of properties for sake of checking their default value (Useful for cases when Instance is NotCreatable like services yet we need to get the default value ) then sets the property back to the original value, which might get detected by some games --! WARNING: Sometimes Properties might not be able to be set to the original value due to circumstances
-		SharedStringOverwrite = false, -- !  if the process is not finished aka crashed then none of the affected values will be available; SharedStrings can also be used for ValueTypes that aren't `SharedString`, this behavior is not documented anywhere but makes sense (Could create issues though, due to _potential_ ValueType mix-up, only works on certain types which are all base64 encoded so far); Reason: Allows for potential smaller file size (can also be bigger in some cases)
+		AllowResettingProperties = true, -- Enables Resetting of properties for sake of checking their default value (Useful for cases when Instance is NotCreatable like services yet we need to get the default value ) then sets the property back to the original value, which might get detected by some games --! WARNING: Sometimes Properties might not be able to be set to the original value due to circumstances
+		SharedStringOverwrite = true, -- !  if the process is not finished aka crashed then none of the affected values will be available; SharedStrings can also be used for ValueTypes that aren't `SharedString`, this behavior is not documented anywhere but makes sense (Could create issues though, due to _potential_ ValueType mix-up, only works on certain types which are all base64 encoded so far); Reason: Allows for potential smaller file size (can also be bigger in some cases)
 	}
 
 	if type(CustomOptions) == "table" then
