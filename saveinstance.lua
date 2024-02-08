@@ -807,7 +807,7 @@ local function synsaveinstance(CustomOptions)
 		IgnoreDefaultProperties = true,
 		IgnoreNotArchivable = true,
 		IgnorePropertiesOfNotScriptsOnScriptsMode = false, -- Ignores property of every instance that is not a script in "scripts" mode
-		IgnoreSpecialProperties = false, -- true will disable Terrain & some other things
+		IgnoreSpecialProperties = true, -- true will disable Terrain & some other things
 		-- IsolatePlayerGui = false,
 		IsolateStarterPlayer = false, --If enabled, StarterPlayer will be cleared and the saved starter player will be placed into folders.
 		IsolateLocalPlayer = false, -- Saves Children of LocalPlayer as separate folder and prevents any instance of ClassName Player with .Name identical to LocalPlayer.Name from saving
