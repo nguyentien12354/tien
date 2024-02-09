@@ -815,7 +815,7 @@ local function synsaveinstance(CustomOptions)
 		-- MaxThreads = 3
 		RemovePlayerCharacters = true, -- If enabled, player characters will not be saved.
 		SavePlayers = false,
-		SaveCacheInterval = 0x800, -- The less the more often it saves, but that would mean less performance due to constantly saving
+		SaveCacheInterval = 0x1700, -- The less the more often it saves, but that would mean less performance due to constantly saving
 		ReadMe = true,
 		-- ! Risky
 		AllowResettingProperties = false, -- Enables Resetting of properties for sake of checking their default value (Useful for cases when Instance is NotCreatable like services yet we need to get the default value ) then sets the property back to the original value, which might get detected by some games --! WARNING: Sometimes Properties might not be able to be set to the original value due to circumstances
