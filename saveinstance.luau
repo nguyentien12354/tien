@@ -924,6 +924,8 @@ local function synsaveinstance(CustomOptions)
 				"MaterialService",
 				"ReplicatedFirst",
 				"ReplicatedStorage",
+				"ServerStorage", -- ? Why
+				"ServerScriptService", -- ? Why
 				"SoundService",
 				"StarterGui",
 				"StarterPack",
